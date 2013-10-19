@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "WISMarkModel.h"
+#import "MarkViewController.h"
 
 @interface MapViewController ()
 
@@ -19,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.theMap = [[MKMapView alloc]init];
     }
     return self;
 }
@@ -28,9 +30,8 @@
 {
     [super viewDidLoad];
   //  self.theMap = [[MKMapView alloc] init];
-    self.theMap.delegate = self;
+ //   self.theMap.delegate = self;
     self.theMap.scrollEnabled = YES;
-    self.theMap.zoomEnabled = NO;
     self.theMap.showsUserLocation = YES;
     
     double regionWidth = 2200;
@@ -42,10 +43,10 @@
 	userLoc.latitude =  locationManager.location.coordinate.latitude; //self.theMap.userLocation.location.coordinate.latitude;
 	userLoc.longitude = locationManager.location.coordinate.longitude; //self.theMap.userLocation.location.coordinate.longitude;
     MKCoordinateRegion startRegion  = MKCoordinateRegionMakeWithDistance(userLoc, regionWidth, regionHeight);
-    
+
     [self.theMap setRegion:startRegion animated:YES];
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foundTap:)];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(GoToControllerMark:)];
     
     tapRecognizer.numberOfTapsRequired = 1;
     
@@ -53,7 +54,8 @@
     
     [self.theMap addGestureRecognizer:tapRecognizer];
 
-    [self SaveCoordinates];
+//    [self SaveCoordinates];
+    [self CreateMark];
     
 }
 
@@ -63,13 +65,41 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)foundTap:(UITapGestureRecognizer *)recognizer
+-(void)foundTap:(UITapGestureRecognizer *)recognizer
 {
     CGPoint point = [recognizer locationInView:self.theMap];
     CLLocationCoordinate2D tapCoordinate = [self.theMap convertPoint:point
                                                 toCoordinateFromView:self.view];
     
     NSLog(@"%@ : %f, %f", [[UIDevice currentDevice] name], tapCoordinate.latitude, tapCoordinate.longitude);
+}
+
+-(void)GoToControllerMark:(UITapGestureRecognizer *)recognizer
+{
+    CGPoint point = [recognizer locationInView:self.theMap];
+    CLLocationCoordinate2D tapCoordinate = [self.theMap convertPoint:point
+                                                toCoordinateFromView:self.view];
+    WISMarkModel *model = [WISMarkModel MarkWithCoordinate:&tapCoordinate
+                                                        key:@""
+                                                    comment:@""
+                                                    expire:@""];
+   // MarkViewController *markVC = [[MarkViewController alloc] initWithModel:model];
+    
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    // De este obtenemos el controlador con Identifier "MarkView"
+    MarkViewController *markVC = [storyBoard instantiateViewControllerWithIdentifier:@"MarkView"];
+    markVC.model = model;
+    
+    [self.navigationController pushViewController:markVC animated:YES];
+}
+
+-(void)CreateMark
+{
+    WISMarkModel *model = [WISMarkModel MarkWithCoordinate:nil
+                                                      key:@"key"
+                                                  comment:@"comment"
+                                                   expire:@"1000"];
 }
 
 #pragma mark request
@@ -88,6 +118,7 @@
     }];
     
 }
+
 
 
 

@@ -7,12 +7,25 @@
 //
 
 #import "AppDelegate.h"
+#import "MapViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    // Recuperamos el ViewController principal:
+    UIViewController *rootViewController = [storyboard instantiateInitialViewController];
+    
+    UINavigationController *MapNav = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    
+    // Lo asignamos como controlador raíz
+    self.window.rootViewController = MapNav;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							

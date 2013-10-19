@@ -20,6 +20,8 @@
 		0B71502017D98FC900F83B4D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B71501F17D98FC900F83B4D /* MapViewController.m */; };
 		0B71502217D9931C00F83B4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B71502117D9931C00F83B4D /* MapKit.framework */; };
 		0B71502417D997A700F83B4D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B71502317D997A700F83B4D /* CoreLocation.framework */; };
+		0B8EB0C71805078B00E21F35 /* WISMarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EB0C61805078B00E21F35 /* WISMarkModel.m */; };
+		0B95D4A4180B99C900B17805 /* MarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B95D4A3180B99C900B17805 /* MarkViewController.m */; };
 		C624D73C2CAD45E696E735A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D2C73BAC634A91A37078EF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,10 @@
 		0B71501F17D98FC900F83B4D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0B71502117D9931C00F83B4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0B71502317D997A700F83B4D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0B8EB0C51805078B00E21F35 /* WISMarkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WISMarkModel.h; sourceTree = "<group>"; };
+		0B8EB0C61805078B00E21F35 /* WISMarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WISMarkModel.m; sourceTree = "<group>"; };
+		0B95D4A2180B99C900B17805 /* MarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkViewController.h; sourceTree = "<group>"; };
+		0B95D4A3180B99C900B17805 /* MarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkViewController.m; sourceTree = "<group>"; };
 		4ABF69B1F4544D1DB508F477 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		60D2C73BAC634A91A37078EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -99,10 +105,10 @@
 			children = (
 				0B71500A17D98F3400F83B4D /* AppDelegate.h */,
 				0B71500B17D98F3400F83B4D /* AppDelegate.m */,
-				0B71501317D98F3400F83B4D /* MainStoryboard.storyboard */,
+				0B9A040A1807A3A800EC9C62 /* Views */,
 				0B71500217D98F3400F83B4D /* Supporting Files */,
-				0B71501E17D98FC900F83B4D /* MapViewController.h */,
-				0B71501F17D98FC900F83B4D /* MapViewController.m */,
+				0B9A04081807A36500EC9C62 /* Controllers */,
+				0B9A04091807A38E00EC9C62 /* Models */,
 			);
 			path = WhereIS;
 			sourceTree = "<group>";
@@ -119,6 +125,34 @@
 				0B71501117D98F3400F83B4D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0B9A04081807A36500EC9C62 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B71501E17D98FC900F83B4D /* MapViewController.h */,
+				0B71501F17D98FC900F83B4D /* MapViewController.m */,
+				0B95D4A2180B99C900B17805 /* MarkViewController.h */,
+				0B95D4A3180B99C900B17805 /* MarkViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0B9A04091807A38E00EC9C62 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B8EB0C51805078B00E21F35 /* WISMarkModel.h */,
+				0B8EB0C61805078B00E21F35 /* WISMarkModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0B9A040A1807A3A800EC9C62 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B71501317D98F3400F83B4D /* MainStoryboard.storyboard */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +256,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8EB0C71805078B00E21F35 /* WISMarkModel.m in Sources */,
+				0B95D4A4180B99C900B17805 /* MarkViewController.m in Sources */,
 				0B71500817D98F3400F83B4D /* main.m in Sources */,
 				0B71500C17D98F3400F83B4D /* AppDelegate.m in Sources */,
 				0B71502017D98FC900F83B4D /* MapViewController.m in Sources */,
